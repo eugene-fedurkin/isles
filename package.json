@@ -1,0 +1,13 @@
+{
+  "name": "isles-task",
+  "version": "1.0.0",
+  "description": "",
+  "main": "map.js",
+  "dependencies": {
+    "chalk": "^2.3.2"
+  },
+  "devDependencies": {},
+  "scripts": {},
+  "author": "eugene",
+  "license": "ISC"
+}
