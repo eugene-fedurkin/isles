@@ -1,20 +1,22 @@
 const chalk = require('chalk');
 
 function visualizeSolution(map, isleMap) {
-    const colors = [chalk.bgCyan, chalk.bgBlue, chalk.bgRed, chalk.bgRedBright, chalk.bgGreen, chalk.bgMagenta, chalk.bgMagentaBright];
+    const colors = [chalk.bgBlue, chalk.bgRed, chalk.bgRedBright, chalk.bgGreen, chalk.bgMagenta];
+    const isleColor = chalk.bgGreen;
+    const waterColor = chalk.bgCyan;
     let colorMap = '';
-
     console.clear();
 
     for (let row = 0; row < map.length; row++) {
         for (let column = 0; column < map[row].length; column++) {
             if (typeof isleMap[row][column] !== 'number') {
-                const isleColor = colors[4];
-                const waterColor = colors[0];
                 colorMap += map[row][column] === 1 ? isleColor('   ') : waterColor('   ');
             } else {
                 const color = isleMap[row][column] % (colors.length - 1);
-                colorMap += colors[color](` ${isleMap[row][column]} `);
+                const sizeCell = ` ${isleMap[row][column]}${isleMap[row][column] > 9 ? '' : ' '}`
+                colorMap += !isleMap[row][column]
+                    ? waterColor(sizeCell)
+                    : colors[color](sizeCell) ;
             }
         }
         colorMap += '\n';
